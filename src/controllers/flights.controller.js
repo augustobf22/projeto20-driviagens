@@ -9,11 +9,11 @@ async function create(req, res) {
 };
 
 async function findFlights(req, res) {
-    const {origin, destination, date} = req.query;
-    //se esta vazio, como fica? undefined ou null?
-    await flightsService.findFlights(origin, destination, date);
+    const {origin, destination, "smaller-date": smallerDate, "bigger-date": biggerDate} = req.query;
 
-    res.sendStatus(200);
+    const result = await flightsService.findFlights(origin, destination, smallerDate, biggerDate);
+
+    res.status(200).send(result);
 }
 
-export const flightsController = {create}; 
+export const flightsController = {create, findFlights};

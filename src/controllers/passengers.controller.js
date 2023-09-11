@@ -10,10 +10,9 @@ async function create(req, res) {
 
 async function findTravels(req, res) {
     const { name } = req.query;
-    //usar nas outras camadas
 
-    const travels = await passengersService.findTravels();
+    const travels = await passengersService.findTravels(name);
     res.send(travels).status(200);
 };
 
-export const passengersController = {create, findTravels};
+export const passengersController = {create, findTravels}; 

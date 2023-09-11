@@ -1,10 +1,12 @@
-import Joi from "joi";
+import joiBase from "joi";
+import joiDate from "@joi/date";
 
-const Joi = require('joi')
-    .extend(require('@joi/date'));
+const Joi = joiBase.extend(joiDate);
 
 export const schemaFlight = Joi.object({
     origin: Joi.number().integer().required(),
 	destination: Joi.number().integer().required(),
-	date: Joi.date().format('DD-MM-YYYY').utc().required()
+	date: Joi.date().format("DD-MM-YYYY").required().messages({
+        'date.format': "The date should be in the DD-MM-YYY format"
+    })
 });
