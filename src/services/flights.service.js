@@ -8,8 +8,7 @@ async function create(origin, destination, date) {
     const checkCities  = await flightsRepository.checkCities(origin, destination);
     if (checkCities.rowCount < 2) throw errors.notFound("City");
 
-    if (parseDate(date) < Date.now()) {
-        throw errors.unprocessable("Date");}
+    if (parseDate(date) < Date.now()) throw errors.unprocessable("Date");
 
     await flightsRepository.create(origin, destination, date);
 };

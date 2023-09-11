@@ -28,7 +28,7 @@ export default function whichFilters(origin, destination, smallerDate, biggerDat
                     //error 422
                 }
             } else {
-                query+=" ORDER BY date DESC`"
+                query+=" ORDER BY date DESC"
             }
         } else if(smallerDate !== undefined) {
             if(biggerDate !== undefined) {
@@ -40,7 +40,6 @@ export default function whichFilters(origin, destination, smallerDate, biggerDat
         } else {
             query+=" ORDER BY date DESC"
         }
-
         return {query, parameters};
     }
 
