@@ -6,6 +6,7 @@ async function create(firstName, lastName) {
 
 async function findTravels(name) {
     const travels = await passengersRepository.findTravels(name);
+    return travels;
 };
 
 export const passengersService = {create, findTravels}; 
