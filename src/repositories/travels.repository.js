@@ -6,7 +6,7 @@ async function checkFlight(flightId) {
 }
 
 async function checkPassenger(passengerId) {
-    const result = await db.query(`SELECT * FROM passenger WHERE id = $1`, [passengerId]);
+    const result = await db.query(`SELECT * FROM passengers WHERE id = $1`, [passengerId]);
     return result.rows[0];
 }
 

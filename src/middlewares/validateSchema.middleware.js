@@ -1,3 +1,5 @@
+import { errors } from "../utils/errors.js";
+
 export function validateSchema(schema) {
 
     return (req, res, next) => {
@@ -7,7 +9,7 @@ export function validateSchema(schema) {
             let errorMessage = "";
             validation.error.details.forEach(detail => errorMessage += detail.message + " ");
             
-            return res.status(422).send(errorMessage);
+            throw errors.joi(errorMessage);
         }
 
         next();

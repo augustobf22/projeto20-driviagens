@@ -1,10 +1,6 @@
 import { citiesRepository } from "../repositories/cities.repository.js"; 
 
-async function create(name) {
-    const alreadyExists = citiesRepository.check(name);
-
-    // if(alreadyExists === undefined) ERRO 409 CONFLICT
-    
+async function create(name) {    
     await citiesRepository.create(name);
 };
 
